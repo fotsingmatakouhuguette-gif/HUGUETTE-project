@@ -30,6 +30,9 @@ game_state = MENU
 
 screen=pygame.display.set_mode((WIDTH,HEIGHT))
 pygame.display.set_caption("[RIDDLER]")
+clock = pygame.time.Clock()
+font = pygame.font.Font(None, 36)
+big_font = pygame.font.Font(None, 64)
 
 while True:
     for event in pygame.event.get():
