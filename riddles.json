@@ -1,0 +1,828 @@
+{
+  "riddles": [
+    {
+      
+      "question": "The more you move, the more you leave behind",
+      "choices": {
+        "1": "Shadow",
+        "2": "Footstep",
+        "3": "Wind",
+        "4": "Dust"
+      },
+      "answer": 2
+    },
+    {
+      
+      "question": "I have cities but no houses, water but no fishes, and mountains but no trees. Who am I?",
+      "choices": {
+        "1": "Globe",
+        "2": "Painting",
+        "3": "Map",
+        "4": "Dream"
+      },
+      "answer": 3
+    },
+    {
+      
+      "question": "I disappear as soon as they call my name",
+      "choices": {
+        "1": "Silence",
+        "2": "Echo",
+        "3": "Shadow",
+        "4": "Secret"
+      },
+      "answer": 1
+    },
+    {
+      
+      "question": "What has to be broken before you can use it?",
+      "choices": {
+        "1": "Egg",
+        "2": "Glass",
+        "3": "Stick",
+        "4": "Seal"
+      },
+      "answer": 1
+    },
+    {
+      
+      "question": "I’m born tall and I die short",
+      "choices": {
+        "1": "Tree",
+        "2": "Pencil",
+        "3": "Building",
+        "4": "Candle"
+      },
+      "answer": 4
+    },
+    {
+      
+      "question": "I get wetter the more I dry. Who am I?",
+      "choices": {
+        "1": "Sponge",
+        "2": "Cloud",
+        "3": "Rain",
+        "4": "Towel"
+      },
+      "answer": 4
+    },
+    {
+      
+      "question": "What word is spelled incorrectly in all dictionaries?",
+      "choices": {
+        "1": "Wrong",
+        "2": "Incorrectly",
+        "3": "Mistake",
+        "4": "Error"
+      },
+      "answer": 2
+    },
+    {
+      
+      "question": "I have keys but no room. Who am I?",
+      "choices": {
+        "1": "Piano",
+        "2": "Keyboard",
+        "3": "Lock",
+        "4": "Map"
+      },
+      "answer": 2
+    },
+    {
+      
+      "question": "Forward I was heavy, backward I’m not. What am I?",
+      "choices": {
+        "1": "Load",
+        "2": "Weight",
+        "3": "Ton / Not",
+        "4": "Stone"
+      },
+      "answer": 3
+    },
+    {
+      
+      "question": "The more you have of me, the less you see",
+      "choices": {
+        "1": "Fog",
+        "2": "Darkness",
+        "3": "Night",
+        "4": "Smoke"
+      },
+      "answer": 2
+    },
+    {
+      
+      "question": "What has an eye but cannot see?",
+      "choices": {
+        "1": "Needle",
+        "2": "Camera",
+        "3": "Storm",
+        "4": "Potato"
+      },
+      "answer": 1
+    },
+    {
+      
+      "question": "Has teeth but can’t bite",
+      "choices": {
+        "1": "Saw",
+        "2": "Comb",
+        "3": "Zipper",
+        "4": "Gear"
+      },
+      "answer": 2
+    },
+    {
+      
+      "question": "What building has the most stories?",
+      "choices": {
+        "1": "School",
+        "2": "Hotel",
+        "3": "Cinema",
+        "4": "Library"
+      },
+      "answer": 4
+    },
+    {
+      
+      "question": "What lets you look right through a wall?",
+      "choices": {
+        "1": "Light",
+        "2": "Glass",
+        "3": "Window",
+        "4": "Air"
+      },
+      "answer": 1
+    },
+    {
+      
+      "question": "What has a neck but no head?",
+      "choices": {
+        "1": "Shirt",
+        "2": "Guitar",
+        "3": "Road",
+        "4": "Bottle"
+      },
+      "answer": 4
+    },
+    {
+      
+      "question": "I have hands but I can’t clap",
+      "choices": {
+        "1": "Doll",
+        "2": "Statue",
+        "3": "Robot",
+        "4": "Clock"
+      },
+      "answer": 4
+    },
+    {
+      
+      "question": "What can you hold in your left hand but not your right hand?",
+      "choices": {
+        "1": "Your phone",
+        "2": "Your shadow",
+        "3": "A pen",
+        "4": "Your right hand"
+      },
+      "answer": 4
+    },
+    {
+      
+      "question": "What flies forever and never rests?",
+      "choices": {
+        "1": "Wind",
+        "2": "Cloud",
+        "3": "Bird",
+        "4": "Time"
+      },
+      "answer": 4
+    },
+    {
+      
+      "question": "I have no life but I can die. Who am I?",
+      "choices": {
+        "1": "Battery",
+        "2": "Fire",
+        "3": "Computer",
+        "4": "Robot"
+      },
+      "answer": 1
+    },
+    {
+      
+      "question": "I can fall from the tallest building and be OK, but put me in water and I die",
+      "choices": {
+        "1": "Stone",
+        "2": "Glass",
+        "3": "Plastic",
+        "4": "Paper"
+      },
+      "answer": 4
+    },
+    {
+      
+      "question": "What is always in front of you but can’t be seen?",
+      "choices": {
+        "1": "Future",
+        "2": "Air",
+        "3": "Shadow",
+        "4": "Tomorrow"
+      },
+      "answer": 1
+    },
+    {
+      
+      "question": "I have one leg, one foot, and four legs. Who am I?",
+      "choices": {
+        "1": "Chair",
+        "2": "Table",
+        "3": "Animal",
+        "4": "Bed"
+      },
+      "answer": 4
+    },
+    {
+      
+      "question": "What can run but never talk?",
+      "choices": {
+        "1": "River",
+        "2": "Clock",
+        "3": "Machine",
+        "4": "Horse"
+      },
+      "answer": 1
+    },
+    {
+      
+      "question": "What can travel the whole world while staying in the same corner?",
+      "choices": {
+        "1": "Compass",
+        "2": "Coin",
+        "3": "Clock",
+        "4": "Stamp"
+      },
+      "answer": 4
+    },
+    {
+      
+      "question": "I have an eye but can’t see, and I have a storm",
+      "choices": {
+        "1": "Tornado",
+        "2": "Cyclone",
+        "3": "Volcano",
+        "4": "Hurricane"
+      },
+      "answer": 4
+    },
+    {
+      
+      "question": "What curls up the way its mother taught it?",
+      "choices": {
+        "1": "A baby centipede",
+        "2": "A snake",
+        "3": "An earthworm",
+        "4": "A caterpillar"
+      },
+      "answer": 1
+    },
+    {
+      
+      "question": "What does not allow another hen to brood in its place?",
+      "choices": {
+        "1": "A rooster",
+        "2": "A chick",
+        "3": "A wild hen",
+        "4": "The hen sitting on her eggs"
+      },
+      "answer": 4
+    },
+    {
+      
+      "question": "Who dances to chase away evil spirits among the Bassa?",
+      "choices": {
+        "1": "Women with the koo or bikêhên",
+        "2": "Hunters",
+        "3": "Elders",
+        "4": "Children"
+      },
+      "answer": 1
+    },
+    {
+      
+      "question": "What tests the bravery of young Bassa on the ground?",
+      "choices": {
+        "1": "Hunting",
+        "2": "Masin wrestling",
+        "3": "Racing",
+        "4": "Stick fighting"
+      },
+      "answer": 2
+    },
+    {
+      
+      "question": "Which pierced rock reads the future among the Bassa?",
+      "choices": {
+        "1": "Sacred hill",
+        "2": "Royal stone",
+        "3": "Stone altar",
+        "4": "Ngok Lituba"
+      },
+      "answer": 4
+    },
+    {
+      
+      "question": "Who passes down clan history to future Bassa men?",
+      "choices": {
+        "1": "The Ngambi priest",
+        "2": "The village chief",
+        "3": "The griot",
+        "4": "The elder council"
+      },
+      "answer": 1
+    },
+    {
+      
+      "question": "What is played by two people on a piece of wood?",
+      "choices": {
+        "1": "Chess",
+        "2": "Drafts",
+        "3": "Njéga game",
+        "4": "Ludo"
+      },
+      "answer": 3
+    },
+    {
+      
+      "question": "Which ritual dance heals the sick among the Bassa?",
+      "choices": {
+        "1": "Bikutsi",
+        "2": "Ngoma",
+        "3": "Mangambeu",
+        "4": "Ifon"
+      },
+      "answer": 4
+    },
+    {
+      
+      "question": "Who chooses the date of a Bassa marriage with the priests?",
+      "choices": {
+        "1": "The specialist Nkwee bi ok",
+        "2": "The father",
+        "3": "The diviner",
+        "4": "The chief"
+      },
+      "answer": 1
+    },
+    {
+      
+      "question": "Which animal is the clever hero of Bassa folktales?",
+      "choices": {
+        "1": "The hare",
+        "2": "The monkey",
+        "3": "The fox",
+        "4": "The tortoise (Khul)"
+      },
+      "answer": 4
+    },
+    {
+      
+      "question": "What laughs in Fulani folktales of the North?",
+      "choices": {
+        "1": "Fulani humor and wisdom",
+        "2": "Children",
+        "3": "Animals",
+        "4": "Spirits"
+      },
+      "answer": 1
+    },
+    {
+      
+      "question": "Which nomad carries riddles with his herd?",
+      "choices": {
+        "1": "The hunter",
+        "2": "The Fulani with his proverbs",
+        "3": "The farmer",
+        "4": "The blacksmith"
+      },
+      "answer": 2
+    },
+    {
+      
+      "question": "What travels like a Fulani but stays in one place?",
+      "choices": {
+        "1": "The herd",
+        "2": "The road",
+        "3": "The desert",
+        "4": "The Fulani tent"
+      },
+      "answer": 4
+    },
+    {
+      
+      "question": "Who counts the stars with his Fulani cows?",
+      "choices": {
+        "1": "The nomadic herdsman",
+        "2": "The chief",
+        "3": "The marabout",
+        "4": "The trader"
+      },
+      "answer": 1
+    },
+    {
+      
+      "question": "Which book gathers Fulani laughter and riddles?",
+      "choices": {
+        "1": "Tales of the Sahel",
+        "2": "Northern Proverbs",
+        "3": "African Wisdom",
+        "4": "Humor and Fulani Wisdom"
+      },
+      "answer": 4
+    },
+    {
+      
+      "question": "What bellows proverbs among the Fulani?",
+      "choices": {
+        "1": "The bull",
+        "2": "The wind",
+        "3": "The shepherd",
+        "4": "The sacred cow"
+      },
+      "answer": 4
+    },
+    {
+      
+      "question": "Who dances pulaaku in Fulani folktales?",
+      "choices": {
+        "1": "The honorable young Fulani",
+        "2": "The warrior",
+        "3": "The elder",
+        "4": "The child"
+      },
+      "answer": 1
+    },
+    {
+      
+      "question": "Which wind carries riddles of Northern Cameroon?",
+      "choices": {
+        "1": "Monsoon",
+        "2": "Sea breeze",
+        "3": "Harmattan",
+        "4": "Tornado"
+      },
+      "answer": 3
+    },
+    {
+      
+      "question": "What links the Fulani, folktales, and slang?",
+      "choices": {
+        "1": "Songs",
+        "2": "Myths",
+        "3": "Old sayings",
+        "4": "Northern riddles"
+      },
+      "answer": 4
+    },
+    {
+      
+      "question": "Who laughs at the foolishness of Fulani goats?",
+      "choices": {
+        "1": "The Fulani child",
+        "2": "The shepherd",
+        "3": "The mother",
+        "4": "The elder"
+      },
+      "answer": 1
+    },
+    {
+      
+      "question": "What does not come out of its shell unless it is hungry?",
+      "choices": {
+        "1": "The Fang tortoise",
+        "2": "Crab",
+        "3": "Snail",
+        "4": "Hedgehog"
+      },
+      "answer": 1
+    },
+    {
+      
+      "question": "Which beauty is not seen on the skin?",
+      "choices": {
+        "1": "Physical beauty",
+        "2": "Beti mvè beauty",
+        "3": "Jewelry",
+        "4": "Youth"
+      },
+      "answer": 2
+    },
+    {
+      
+      "question": "What brings night down suddenly like rain?",
+      "choices": {
+        "1": "Thunder",
+        "2": "Clouds",
+        "3": "Fang mvèng za",
+        "4": "Wind"
+      },
+      "answer": 3
+    },
+    {
+      
+      "question": "Who tells the trap, “Another will come after me”?",
+      "choices": {
+        "1": "The Beti dwarf squirrel",
+        "2": "Rat",
+        "3": "Monkey",
+        "4": "Antelope"
+      },
+      "answer": 1
+    },
+    {
+      
+      "question": "Which rocky stream forces one to stop?",
+      "choices": {
+        "1": "Rapids",
+        "2": "Ewondo osü",
+        "3": "Swamp",
+        "4": "River bend"
+      },
+      "answer": 2
+    },
+    {
+      
+      "question": "What traps a man passing from afar?",
+      "choices": {
+        "1": "A net",
+        "2": "A rope",
+        "3": "A cage",
+        "4": "The pit ebi ke fughe mur"
+      },
+      "answer": 4
+    },
+    {
+      
+      "question": "Which rotten fish passes on its worms?",
+      "choices": {
+        "1": "Silure ebòl ngòl",
+        "2": "Tilapia",
+        "3": "Sardine",
+        "4": "Mackerel"
+      },
+      "answer": 1
+    },
+    {
+      
+      "question": "Which riddle is asked by the Fang magical plant?",
+      "choices": {
+        "1": "Herbal chant",
+        "2": "Forest song",
+        "3": "Mvet riddle",
+        "4": "Healing prayer"
+      },
+      "answer": 3
+    },
+    {
+      
+      "question": "What hides the grandfather inside its Beti questions?",
+      "choices": {
+        "1": "Proverb",
+        "2": "Tale",
+        "3": "Song",
+        "4": "Nkana riddle"
+      },
+      "answer": 4
+    },
+    {
+      
+      "question": "Which owl pays for its cry with its life?",
+      "choices": {
+        "1": "Akungu angaburan",
+        "2": "Night owl",
+        "3": "Forest owl",
+        "4": "White owl"
+      },
+      "answer": 1
+    },
+    {
+      
+      "question": "What looks around after picking a mushroom?",
+      "choices": {
+        "1": "The Bamileke mushroom picker",
+        "2": "Hunter",
+        "3": "Farmer",
+        "4": "Child"
+      },
+      "answer": 1
+    },
+    {
+      
+      "question": "Which snake will arrange its legs as it grows?",
+      "choices": {
+        "1": "Python",
+        "2": "Cobra",
+        "3": "Lizard",
+        "4": "Bamileke sloth"
+      },
+      "answer": 4
+    },
+    {
+      
+      "question": "Through where does the thorn come out among the Bamileke?",
+      "choices": {
+        "1": "The foot",
+        "2": "The hand",
+        "3": "Where it entered",
+        "4": "The back"
+      },
+      "answer": 3
+    },
+    {
+      
+      "question": "Who does not deny the mud after a fall?",
+      "choices": {
+        "1": "The honest Bamileke",
+        "2": "The coward",
+        "3": "The liar",
+        "4": "The child"
+      },
+      "answer": 1
+    },
+    {
+      
+      "question": "Which big belly deserves congratulations?",
+      "choices": {
+        "1": "A rich man’s",
+        "2": "A glutton’s",
+        "3": "A sick man’s",
+        "4": "A pregnant woman’s"
+      },
+      "answer": 4
+    },
+    {
+      
+      "question": "What can salt never be?",
+      "choices": {
+        "1": "Bitter",
+        "2": "Sour",
+        "3": "Sweet",
+        "4": "Hot"
+      },
+      "answer": 3
+    },
+    {
+      
+      "question": "Which Ngwe tests Bamileke wrongdoers?",
+      "choices": {
+        "1": "Council",
+        "2": "Judge",
+        "3": "Oracle",
+        "4": "Magic potion"
+      },
+      "answer": 4
+    },
+    {
+      
+      "question": "Who judges with torture or raffia wine?",
+      "choices": {
+        "1": "Traditional justice",
+        "2": "The police",
+        "3": "The king",
+        "4": "The court"
+      },
+      "answer": 1
+    },
+    {
+      
+      "question": "Which spider divides among the Bamileke?",
+      "choices": {
+        "1": "House spider",
+        "2": "Forest spider",
+        "3": "Grassfields spider",
+        "4": "Black widow"
+      },
+      "answer": 3
+    },
+    {
+      
+      "question": "Which village practiced Sâ witchcraft?",
+      "choices": {
+        "1": "Bandjoun",
+        "2": "Bafoussam",
+        "3": "Dschang",
+        "4": "Ancient Bansoa"
+      },
+      "answer": 4
+    },
+    {
+      
+      "question": "Which Fon rules over the Banso hills?",
+      "choices": {
+        "1": "Fon Bamum",
+        "2": "Fon Kom",
+        "3": "Fon Bali",
+        "4": "Nso king"
+      },
+      "answer": 4
+    },
+    {
+      
+      "question": "What grows a beard before teeth?",
+      "choices": {
+        "1": "Maize",
+        "2": "Millet",
+        "3": "Sorghum",
+        "4": "Yam"
+      },
+      "answer": 1
+    },
+    {
+      
+      "question": "Which mushroom attracts others among the Banso?",
+      "choices": {
+        "1": "Poisonous one",
+        "2": "Rare one",
+        "3": "Large one",
+        "4": "The vigilant picker’s mushroom"
+      },
+      "answer": 4
+    },
+    {
+      
+      "question": "Who drinks once and starts again?",
+      "choices": {
+        "1": "The mushroom seeker",
+        "2": "Hunter",
+        "3": "Farmer",
+        "4": "Drunkard"
+      },
+      "answer": 1
+    },
+    {
+      
+      "question": "Which snake promises future legs?",
+      "choices": {
+        "1": "Python",
+        "2": "Viper",
+        "3": "Cobra",
+        "4": "Highland sloth"
+      },
+      "answer": 4
+    },
+    {
+      
+      "question": "By which path does the thorn come out in Banso land?",
+      "choices": {
+        "1": "The opposite side",
+        "2": "The nearest side",
+        "3": "The same way it entered",
+        "4": "The back"
+      },
+      "answer": 3
+    },
+    {
+      
+      "question": "Which mud is never denied?",
+      "choices": {
+        "1": "Mud from an honest fall",
+        "2": "Rain mud",
+        "3": "River mud",
+        "4": "Market mud"
+      },
+      "answer": 1
+    },
+    {
+      
+      "question": "Which Banso belly is blessed?",
+      "choices": {
+        "1": "Fat belly",
+        "2": "Sick belly",
+        "3": "Swollen maternity belly",
+        "4": "Old belly"
+      },
+      "answer": 3
+    },
+    {
+      
+      "question": "What does Ngwe reveal among the Banso?",
+      "choices": {
+        "1": "Wealth",
+        "2": "Power",
+        "3": "Secrets",
+        "4": "Truth of the guilty"
+      },
+      "answer": 4
+    },
+   {
+      "question": "Which Sâ made the ancestors invincible?",
+      "choices": {
+        "1": "Magic of the Bansoa",
+        "2": "War songs",
+        "3": "Strong weapons",
+        "4": "Tribal unity"
+      },
+      "answer": 1
+    }
+  ]
+}
