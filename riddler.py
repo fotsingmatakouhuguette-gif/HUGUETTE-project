@@ -42,4 +42,5 @@ while True:
 
 
     pygame.display.update()
+    
     pygame.time.Clock().tick(60)
