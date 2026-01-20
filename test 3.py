@@ -17,6 +17,14 @@ STOP_THRESHOLD = 0.1
 
 TOTAL_ENEMIES = 10
 GAP_SIZE = 32
+#-----------------GAME STATES-----------------
+MENU="menu"
+PLAYING="playing"
+PAUSED="pause"
+HOW_TO_PLAY="how to play"
+ABOUT="about"
+
+game_state= MENU
 
 # ---------------- BALL CLASS ----------------
 class Ball:
