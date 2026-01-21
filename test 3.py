@@ -235,6 +235,18 @@ while running:
     if game_state == MENU:
         pygame.draw.rect(screen, (0, 150, 0), start_button_rect)
         screen.blit(font.render("START", True, (255, 255, 255)), (360, 215))
+        screen.blit(font.render("ABOUT",True,(255,255,255)),(360,330))
+        screen.blit(font.render("HOW TO PLAY",True,(255,255,255)),(320,275))
+
+    elif game_state==ABOUT:
+        screen.blit(font.render("marbble game created  by nadriekoda",True,(0,0,0)),(200,230))
+        pygame.draw.rect(screen, (0, 150, 0), menu_button_rect)
+        screen.blit(font.render("MENU",True,(255,255,255)),(710,25))   
+
+    elif game_state==HOW_TO_PLAY:
+         screen.blit(font.render("drag the ball with the mouse and shoot",True,(0,0,0)),(200,230))
+         pygame.draw.rect(screen, (0, 150, 0), menu_button_rect)
+         screen.blit(font.render("MENU",True,(255,255,255)),(710,25))
 
     elif game_state == PLAYING:
         pygame.draw.rect(screen, (0, 0, 0),
@@ -267,6 +279,7 @@ while running:
         pygame.draw.rect(screen, (150, 0, 0), restart_button_rect)
         screen.blit(font.render("RESUME", True, (255, 255, 255)), (350, 265))
         screen.blit(font.render("RESTART", True, (255, 255, 255)), (345, 335))
+        screen.blit(font.render("MENU",True,(255,255,255)),(710,25))
 
     elif game_state == GAME_OVER:
         winner = "DRAW"
@@ -279,7 +292,8 @@ while running:
                     (WIDTH // 2 - 100, HEIGHT // 2))
         pygame.draw.rect(screen, (150, 0, 0), restart_button_rect)
         screen.blit(font.render("RESTART", True, (255, 255, 255)), (345, 335))
-
+        screen.blit(font.render("MENU",True,(255,255,255)),(710,25))
+        
     screen.blit(font.render(f"P1: {scores[0]}", True, (0, 0, 0)), (10, 10))
     screen.blit(font.render(f"P2: {scores[1]}", True, (0, 0, 0)), (10, 40))
     screen.blit(font.render(f"Turn: Player {current_player + 1}", True, (0, 0, 150)), (10, 70))
