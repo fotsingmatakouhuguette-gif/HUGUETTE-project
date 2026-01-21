@@ -21,10 +21,15 @@ GAP_SIZE = 32
 MENU="menu"
 PLAYING="playing"
 PAUSED="pause"
-HOW_TO_PLAY="how to play"
-ABOUT="about"
+GAME_OVER="game over"
 
 game_state= MENU
+
+# ---------------- BUTTONS ----------------
+start_button_rect = pygame.Rect(300, 200, 200, 50)
+pause_button_rect = pygame.Rect(740, 10, 50, 30)
+resume_button_rect = pygame.Rect(300, 250, 200, 50)
+restart_button_rect = pygame.Rect(300, 320, 200, 50)
 
 # ---------------- BALL CLASS ----------------
 class Ball:
@@ -64,6 +69,27 @@ def ball_collision(b1, b2):
     b2.vx += p * nx
     b2.vy += p * ny
 
+# ---------------- RESET GAME ----------------
+def reset_game():
+    global enemies, player_ball, scores, current_player
+    global turn_active, aiming, game_state
+
+    enemies = []
+    for _ in range(TOTAL_ENEMIES):
+        x = random.randint(SQUARE_X + BALL_RADIUS, SQUARE_X + SQUARE_SIZE - BALL_RADIUS)
+        y = random.randint(SQUARE_Y + BALL_RADIUS, SQUARE_Y + SQUARE_SIZE - BALL_RADIUS)
+        enemies.append(Ball(x, y, (255, 0, 0)))
+
+    player_ball.x = WIDTH // 2
+    player_ball.y = HEIGHT - 40
+    player_ball.vx = player_ball.vy = 0
+
+    scores = [0, 0]
+    current_player = 0
+    turn_active = False
+    aiming = False
+    game_state = PLAYING
+
 # ---------------- MAIN GAME ----------------
 def main():
     pygame.init()
@@ -72,14 +98,9 @@ def main():
     clock = pygame.time.Clock()
     font = pygame.font.Font(None, 32)
 
-    enemies = []
-    for _ in range(TOTAL_ENEMIES):
-        x = random.randint(SQUARE_X + BALL_RADIUS, SQUARE_X + SQUARE_SIZE - BALL_RADIUS)
-        y = random.randint(SQUARE_Y + BALL_RADIUS, SQUARE_Y + SQUARE_SIZE - BALL_RADIUS)
-        enemies.append(Ball(x, y, (255, 0, 0)))
-
     player_ball = Ball(WIDTH // 2, HEIGHT - 40, (0, 0, 255))
-
+    
+    enemies=[]
     aiming = False
     start_pos = (0, 0)
     current_player = 0
