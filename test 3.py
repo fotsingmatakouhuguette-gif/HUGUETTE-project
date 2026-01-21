@@ -150,14 +150,14 @@ while running:
                 if resume_button_rect.collidepoint(mouse_pos):
                     game_state = PLAYING
                 elif restart_button_rect.collidepoint(mouse_pos):
-                    reset_game()#restart game from pause
+                    reset_game()
 
             elif game_state == GAME_OVER:
                 if restart_button_rect.collidepoint(mouse_pos):
                     reset_game()
             elif menu_button_rect.collidepoint(mouse_pos):
                 if game_state in (HOW_TO_PLAY,ABOUT,GAME_OVER,PAUSED):
-                    game_state=MENU # Return to menu from various states
+                    game_state=MENU
 
         if event.type == pygame.MOUSEBUTTONUP and aiming and game_state == PLAYING:
             aiming = False
@@ -234,14 +234,17 @@ while running:
 
     if game_state == MENU:
         pygame.draw.rect(screen, (0, 150, 0), start_button_rect)
+        pygame.draw.rect(screen,(0,150,0),about_button_rect)
+        pygame.draw.rect(screen,(0,150,0),how_to_play_button_rect)
         screen.blit(font.render("START", True, (255, 255, 255)), (360, 215))
         screen.blit(font.render("ABOUT",True,(255,255,255)),(360,330))
         screen.blit(font.render("HOW TO PLAY",True,(255,255,255)),(320,275))
+       
 
     elif game_state==ABOUT:
         screen.blit(font.render("marbble game created  by nadriekoda",True,(0,0,0)),(200,230))
         pygame.draw.rect(screen, (0, 150, 0), menu_button_rect)
-        screen.blit(font.render("MENU",True,(255,255,255)),(710,25))   
+        screen.blit(font.render("MENU",True,(255,255,255)),(710,25))
 
     elif game_state==HOW_TO_PLAY:
          screen.blit(font.render("drag the ball with the mouse and shoot",True,(0,0,0)),(200,230))
@@ -254,6 +257,7 @@ while running:
         screen.blit(font.render(f"P1: {scores[0]}", True, (0, 0, 0)), (10, 10))
         screen.blit(font.render(f"P2: {scores[1]}", True, (0, 0, 0)), (10, 40))
         screen.blit(font.render(f"Turn: Player {current_player + 1}", True, (0, 0, 150)), (10, 70))
+
 
         # ---- DRAW GAPS ----
         pygame.draw.rect(screen, (235,235,235),
@@ -274,12 +278,13 @@ while running:
             pygame.draw.line(screen, (0, 0, 255), start_pos, (mx, my), 2)
 
         pygame.draw.rect(screen, (200, 0, 0), pause_button_rect)
-        screen.blit(font.render("||", True, (255, 255, 255)), (755, 12))
+        screen.blit(font.render("||", True, (255, 255, 255)), (757, 12))
 
     elif game_state == PAUSED:
         screen.blit(font.render("PAUSED", True, (0, 0, 0)), (350, 200))
         pygame.draw.rect(screen, (0, 150, 0), resume_button_rect)
         pygame.draw.rect(screen, (150, 0, 0), restart_button_rect)
+        pygame.draw.rect(screen, (0, 150, 0), menu_button_rect)
         screen.blit(font.render("RESUME", True, (255, 255, 255)), (350, 265))
         screen.blit(font.render("RESTART", True, (255, 255, 255)), (345, 335))
         screen.blit(font.render("MENU",True,(255,255,255)),(710,25))
@@ -290,11 +295,13 @@ while running:
             winner = "PLAYER 1 WINS"
         elif scores[1] > scores[0]:
             winner = "PLAYER 2 WINS"
-
+   
         screen.blit(font.render(winner, True, (0, 150, 0)),
                     (WIDTH // 2 - 100, HEIGHT // 2))
         pygame.draw.rect(screen, (150, 0, 0), restart_button_rect)
+        pygame.draw.rect(screen, (0, 150, 0), menu_button_rect)
         screen.blit(font.render("RESTART", True, (255, 255, 255)), (345, 335))
         screen.blit(font.render("MENU",True,(255,255,255)),(710,25))
+
 
     pygame.display.flip()
