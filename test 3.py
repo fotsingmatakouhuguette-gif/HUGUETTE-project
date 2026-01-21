@@ -251,6 +251,9 @@ while running:
     elif game_state == PLAYING:
         pygame.draw.rect(screen, (0, 0, 0),
             (SQUARE_X, SQUARE_Y, SQUARE_SIZE, SQUARE_SIZE), 2)
+        screen.blit(font.render(f"P1: {scores[0]}", True, (0, 0, 0)), (10, 10))
+        screen.blit(font.render(f"P2: {scores[1]}", True, (0, 0, 0)), (10, 40))
+        screen.blit(font.render(f"Turn: Player {current_player + 1}", True, (0, 0, 150)), (10, 70))
 
         # ---- DRAW GAPS ----
         pygame.draw.rect(screen, (235,235,235),
@@ -293,9 +296,5 @@ while running:
         pygame.draw.rect(screen, (150, 0, 0), restart_button_rect)
         screen.blit(font.render("RESTART", True, (255, 255, 255)), (345, 335))
         screen.blit(font.render("MENU",True,(255,255,255)),(710,25))
-        
-    screen.blit(font.render(f"P1: {scores[0]}", True, (0, 0, 0)), (10, 10))
-    screen.blit(font.render(f"P2: {scores[1]}", True, (0, 0, 0)), (10, 40))
-    screen.blit(font.render(f"Turn: Player {current_player + 1}", True, (0, 0, 150)), (10, 70))
 
     pygame.display.flip()
