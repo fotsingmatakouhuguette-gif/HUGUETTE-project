@@ -134,6 +134,10 @@ while running:
             if game_state == MENU:
                 if start_button_rect.collidepoint(mouse_pos):
                     reset_game()
+                elif about_button_rect.collidepoint(mouse_pos):
+                    game_state=ABOUT
+                elif how_to_play_button_rect.collidepoint(mouse_pos):
+                    game_state=HOW_TO_PLAY
 
             elif game_state == PLAYING:
                 if pause_button_rect.collidepoint(mouse_pos):
@@ -146,11 +150,14 @@ while running:
                 if resume_button_rect.collidepoint(mouse_pos):
                     game_state = PLAYING
                 elif restart_button_rect.collidepoint(mouse_pos):
-                    reset_game()
+                    reset_game()#restart game from pause
 
             elif game_state == GAME_OVER:
                 if restart_button_rect.collidepoint(mouse_pos):
                     reset_game()
+            elif menu_button_rect.collidepoint(mouse_pos):
+                if game_state in (HOW_TO_PLAY,ABOUT,GAME_OVER,PAUSED):
+                    game_state=MENU # Return to menu from various states
 
         if event.type == pygame.MOUSEBUTTONUP and aiming and game_state == PLAYING:
             aiming = False
