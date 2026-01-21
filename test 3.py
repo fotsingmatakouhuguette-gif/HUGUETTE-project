@@ -1,6 +1,7 @@
 import pygame
 import random
 import math
+from sys import exit
 
 # ---------------- CONFIG ----------------
 WIDTH, HEIGHT = 800, 600
@@ -16,14 +17,15 @@ FRICTION = 0.99
 STOP_THRESHOLD = 0.1
 
 TOTAL_ENEMIES = 10
-GAP_SIZE = 32
-#-----------------GAME STATES-----------------
-MENU="menu"
-PLAYING="playing"
-PAUSED="pause"
-GAME_OVER="game over"
+GAP_SIZE = 40
 
-game_state= MENU
+# ---------------- GAME STATES ----------------
+MENU = "menu"
+PLAYING = "playing"
+PAUSED = "paused"
+GAME_OVER = "game_over"
+
+game_state = MENU
 
 # ---------------- BUTTONS ----------------
 start_button_rect = pygame.Rect(300, 200, 200, 50)
@@ -90,125 +92,150 @@ def reset_game():
     aiming = False
     game_state = PLAYING
 
-# ---------------- MAIN GAME ----------------
-def main():
-    pygame.init()
-    screen = pygame.display.set_mode((WIDTH, HEIGHT))
-    pygame.display.set_caption("2 Player Knock-Out")
-    clock = pygame.time.Clock()
-    font = pygame.font.Font(None, 32)
+# ---------------- MAIN ----------------
+pygame.init()
+screen = pygame.display.set_mode((WIDTH, HEIGHT))
+pygame.display.set_caption("2 Player Knock-Out")
+clock = pygame.time.Clock()
+font = pygame.font.Font(None, 32)
 
-    player_ball = Ball(WIDTH // 2, HEIGHT - 40, (0, 0, 255))
-    
-    enemies=[]
-    aiming = False
-    start_pos = (0, 0)
-    current_player = 0
-    scores = [0, 0]
-    turn_active = False
-    game_over = False
+player_ball = Ball(WIDTH // 2, HEIGHT - 40, (0, 0, 255))
+enemies = []
+scores = [0, 0]
+current_player = 0
+turn_active = False
+aiming = False
+start_pos = (0, 0)
 
-    running = True
-    while running:
-        clock.tick(FPS)
+running = True
+while running:
+    clock.tick(FPS)
 
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
+    # ---------------- EVENTS ----------------
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            exit()
 
-            if event.type == pygame.MOUSEBUTTONDOWN and not aiming and not turn_active and not game_over:
-                aiming = True
-                start_pos = (player_ball.x, player_ball.y)
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_p and game_state == PLAYING:
+                game_state = PAUSED
+            elif event.key == pygame.K_p and game_state == PAUSED:
+                game_state = PLAYING
 
-            if event.type == pygame.MOUSEBUTTONUP and aiming:
-                aiming = False
-                mx, my = pygame.mouse.get_pos()
-                dx = start_pos[0] - mx
-                dy = start_pos[1] - my
-                dist = math.hypot(dx, dy)
-                if dist > 0:
-                    player_ball.vx = (dx / dist) * PLAYER_POWER
-                    player_ball.vy = (dy / dist) * PLAYER_POWER
-                    turn_active = True
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            mouse_pos = event.pos
 
-        # ---------------- UPDATE ----------------
-        if turn_active:
-            player_ball.move()
-            for e in enemies:
-                e.move()
-                ball_collision(player_ball, e)
+            if game_state == MENU:
+                if start_button_rect.collidepoint(mouse_pos):
+                    reset_game()
 
-            # Enemy collisions
-            for i in range(len(enemies)):
-                for j in range(i + 1, len(enemies)):
-                    ball_collision(enemies[i], enemies[j])
+            elif game_state == PLAYING:
+                if pause_button_rect.collidepoint(mouse_pos):
+                    game_state = PAUSED
+                elif not aiming and not turn_active:
+                    aiming = True
+                    start_pos = (player_ball.x, player_ball.y)
 
-            # Wall + gap logic
-            for e in enemies:
-                # LEFT
-                if e.x - BALL_RADIUS <= SQUARE_X:
-                    if not (SQUARE_Y + SQUARE_SIZE//2 - GAP_SIZE//2 <= e.y <=
-                            SQUARE_Y + SQUARE_SIZE//2 + GAP_SIZE//2):
-                        e.x = SQUARE_X + BALL_RADIUS
-                        e.vx *= -1
-                # RIGHT
-                if e.x + BALL_RADIUS >= SQUARE_X + SQUARE_SIZE:
-                    if not (SQUARE_Y + SQUARE_SIZE//2 - GAP_SIZE//2 <= e.y <=
-                            SQUARE_Y + SQUARE_SIZE//2 + GAP_SIZE//2):
-                        e.x = SQUARE_X + SQUARE_SIZE - BALL_RADIUS
-                        e.vx *= -1
-                # TOP
-                if e.y - BALL_RADIUS <= SQUARE_Y:
-                    if not (SQUARE_X + SQUARE_SIZE//2 - GAP_SIZE//2 <= e.x <=
-                            SQUARE_X + SQUARE_SIZE//2 + GAP_SIZE//2):
-                        e.y = SQUARE_Y + BALL_RADIUS
-                        e.vy *= -1
-                # BOTTOM
-                if e.y + BALL_RADIUS >= SQUARE_Y + SQUARE_SIZE:
-                    if not (SQUARE_X + SQUARE_SIZE//2 - GAP_SIZE//2 <= e.x <=
-                            SQUARE_X + SQUARE_SIZE//2 + GAP_SIZE//2):
-                        e.y = SQUARE_Y + SQUARE_SIZE - BALL_RADIUS
-                        e.vy *= -1
+            elif game_state == PAUSED:
+                if resume_button_rect.collidepoint(mouse_pos):
+                    game_state = PLAYING
+                elif restart_button_rect.collidepoint(mouse_pos):
+                    reset_game()
 
-            # Check escaped balls
-            escaped = 0
-            for e in enemies[:]:
-                if (e.x < SQUARE_X - BALL_RADIUS or
-                    e.x > SQUARE_X + SQUARE_SIZE + BALL_RADIUS or
-                    e.y < SQUARE_Y - BALL_RADIUS or
-                    e.y > SQUARE_Y + SQUARE_SIZE + BALL_RADIUS):
-                    enemies.remove(e)
-                    escaped += 1
+            elif game_state == GAME_OVER:
+                if restart_button_rect.collidepoint(mouse_pos):
+                    reset_game()
 
-            scores[current_player] += escaped
+        if event.type == pygame.MOUSEBUTTONUP and aiming and game_state == PLAYING:
+            aiming = False
+            mx, my = pygame.mouse.get_pos()
+            dx = start_pos[0] - mx
+            dy = start_pos[1] - my
+            dist = math.hypot(dx, dy)
+            if dist > 0:
+                player_ball.vx = (dx / dist) * PLAYER_POWER
+                player_ball.vy = (dy / dist) * PLAYER_POWER
+                turn_active = True
 
-            # End of turn when player ball stops
-            if player_ball.vx == 0 and player_ball.vy == 0:
-                player_ball.x = WIDTH // 2
-                player_ball.y = HEIGHT - 40
-                turn_active = False
+    # ---------------- UPDATE ----------------
+    if game_state == PLAYING and turn_active:
+        player_ball.move()
 
-                # Switch player ONLY if no ball escaped
-                if escaped == 0:
-                    current_player = 1 - current_player
+        escaped = 0
 
-        if len(enemies) == 0:
-            game_over = True
+        for e in enemies[:]:
+            e.move()
+            ball_collision(player_ball, e)
 
-        # ---------------- DRAW ----------------
-        screen.fill((235, 235, 235))
+            # ---- WALLS WITH GAPS ----
+            # LEFT
+            if e.x - BALL_RADIUS <= SQUARE_X:
+                if not (SQUARE_Y + SQUARE_SIZE//2 - GAP_SIZE//2 <= e.y <=
+                        SQUARE_Y + SQUARE_SIZE//2 + GAP_SIZE//2):
+                    e.x = SQUARE_X + BALL_RADIUS
+                    e.vx *= -1
+
+            # RIGHT
+            if e.x + BALL_RADIUS >= SQUARE_X + SQUARE_SIZE:
+                if not (SQUARE_Y + SQUARE_SIZE//2 - GAP_SIZE//2 <= e.y <=
+                        SQUARE_Y + SQUARE_SIZE//2 + GAP_SIZE//2):
+                    e.x = SQUARE_X + SQUARE_SIZE - BALL_RADIUS
+                    e.vx *= -1
+
+            # TOP
+            if e.y - BALL_RADIUS <= SQUARE_Y:
+                if not (SQUARE_X + SQUARE_SIZE//2 - GAP_SIZE//2 <= e.x <=
+                        SQUARE_X + SQUARE_SIZE//2 + GAP_SIZE//2):
+                    e.y = SQUARE_Y + BALL_RADIUS
+                    e.vy *= -1
+
+            # BOTTOM
+            if e.y + BALL_RADIUS >= SQUARE_Y + SQUARE_SIZE:
+                if not (SQUARE_X + SQUARE_SIZE//2 - GAP_SIZE//2 <= e.x <=
+                        SQUARE_X + SQUARE_SIZE//2 + GAP_SIZE//2):
+                    e.y = SQUARE_Y + SQUARE_SIZE - BALL_RADIUS
+                    e.vy *= -1
+
+            # ---- ESCAPE THROUGH GAP ----
+            if (e.x < SQUARE_X - BALL_RADIUS or
+                e.x > SQUARE_X + SQUARE_SIZE + BALL_RADIUS or
+                e.y < SQUARE_Y - BALL_RADIUS or
+                e.y > SQUARE_Y + SQUARE_SIZE + BALL_RADIUS):
+                enemies.remove(e)
+                escaped += 1
+
+        scores[current_player] += escaped
+
+        if player_ball.vx == 0 and player_ball.vy == 0:
+            player_ball.x = WIDTH // 2
+            player_ball.y = HEIGHT - 40
+            turn_active = False
+            if escaped == 0:
+                current_player = 1 - current_player
+
+    if len(enemies) == 0 and game_state == PLAYING:
+        game_state = GAME_OVER
+
+    # ---------------- DRAW ----------------
+    screen.fill((235, 235, 235))
+
+    if game_state == MENU:
+        pygame.draw.rect(screen, (0, 150, 0), start_button_rect)
+        screen.blit(font.render("START", True, (255, 255, 255)), (360, 215))
+
+    elif game_state == PLAYING:
         pygame.draw.rect(screen, (0, 0, 0),
-                         (SQUARE_X, SQUARE_Y, SQUARE_SIZE, SQUARE_SIZE), 2)
-        
+            (SQUARE_X, SQUARE_Y, SQUARE_SIZE, SQUARE_SIZE), 2)
 
-         # Draw gaps
-        pygame.draw.rect(screen, (240, 240, 240),
+        # ---- DRAW GAPS ----
+        pygame.draw.rect(screen, (235,235,235),
             (SQUARE_X + SQUARE_SIZE//2 - GAP_SIZE//2, SQUARE_Y - 2, GAP_SIZE, 4))
-        pygame.draw.rect(screen, (240, 240, 240),
+        pygame.draw.rect(screen, (235,235,235),
             (SQUARE_X + SQUARE_SIZE//2 - GAP_SIZE//2, SQUARE_Y + SQUARE_SIZE - 2, GAP_SIZE, 4))
-        pygame.draw.rect(screen, (240, 240, 240),
+        pygame.draw.rect(screen, (235,235,235),
             (SQUARE_X - 2, SQUARE_Y + SQUARE_SIZE//2 - GAP_SIZE//2, 4, GAP_SIZE))
-        pygame.draw.rect(screen, (240, 240, 240),
+        pygame.draw.rect(screen, (235,235,235),
             (SQUARE_X + SQUARE_SIZE - 2, SQUARE_Y + SQUARE_SIZE//2 - GAP_SIZE//2, 4, GAP_SIZE))
 
         for e in enemies:
@@ -219,23 +246,30 @@ def main():
             mx, my = pygame.mouse.get_pos()
             pygame.draw.line(screen, (0, 0, 255), start_pos, (mx, my), 2)
 
-        screen.blit(font.render(f"Player 1: {scores[0]}", True, (0, 0, 0)), (10, 10))
-        screen.blit(font.render(f"Player 2: {scores[1]}", True, (0, 0, 0)), (10, 40))
-        screen.blit(font.render(f"Turn: Player {current_player + 1}", True, (0, 0, 150)), (10, 70))
+        pygame.draw.rect(screen, (200, 0, 0), pause_button_rect)
+        screen.blit(font.render("||", True, (255, 255, 255)), (755, 12))
 
-        if game_over:
-            winner = "DRAW"
-            if scores[0] > scores[1]:
-                winner = "PLAYER 1 WINS"
-            elif scores[1] > scores[0]:
-                winner = "PLAYER 2 WINS"
+    elif game_state == PAUSED:
+        screen.blit(font.render("PAUSED", True, (0, 0, 0)), (350, 200))
+        pygame.draw.rect(screen, (0, 150, 0), resume_button_rect)
+        pygame.draw.rect(screen, (150, 0, 0), restart_button_rect)
+        screen.blit(font.render("RESUME", True, (255, 255, 255)), (350, 265))
+        screen.blit(font.render("RESTART", True, (255, 255, 255)), (345, 335))
 
-            screen.blit(font.render(winner, True, (0, 150, 0)),
-                        (WIDTH//2 - 90, HEIGHT//2))
+    elif game_state == GAME_OVER:
+        winner = "DRAW"
+        if scores[0] > scores[1]:
+            winner = "PLAYER 1 WINS"
+        elif scores[1] > scores[0]:
+            winner = "PLAYER 2 WINS"
 
-        pygame.display.flip()
+        screen.blit(font.render(winner, True, (0, 150, 0)),
+                    (WIDTH // 2 - 100, HEIGHT // 2))
+        pygame.draw.rect(screen, (150, 0, 0), restart_button_rect)
+        screen.blit(font.render("RESTART", True, (255, 255, 255)), (345, 335))
 
-    pygame.quit()
+    screen.blit(font.render(f"P1: {scores[0]}", True, (0, 0, 0)), (10, 10))
+    screen.blit(font.render(f"P2: {scores[1]}", True, (0, 0, 0)), (10, 40))
+    screen.blit(font.render(f"Turn: Player {current_player + 1}", True, (0, 0, 150)), (10, 70))
 
-if __name__ == "__main__":
-    main()
+    pygame.display.flip()
