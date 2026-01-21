@@ -24,6 +24,8 @@ MENU = "menu"
 PLAYING = "playing"
 PAUSED = "paused"
 GAME_OVER = "game_over"
+ABOUT="about"
+HOW_TO_PLAY="how to play"
 
 game_state = MENU
 
@@ -32,6 +34,9 @@ start_button_rect = pygame.Rect(300, 200, 200, 50)
 pause_button_rect = pygame.Rect(740, 10, 50, 30)
 resume_button_rect = pygame.Rect(300, 250, 200, 50)
 restart_button_rect = pygame.Rect(300, 320, 200, 50)
+about_button_rect= pygame.Rect(300,320,200,50)
+how_to_play_button_rect=pygame.Rect(270,260,260,50)
+menu_button_rect=pygame.Rect(690,10,108,50)
 
 # ---------------- BALL CLASS ----------------
 class Ball:
