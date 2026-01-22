@@ -107,6 +107,8 @@ font = pygame.font.Font(None, 32)
 pygame.mixer.init()
 button_sound = pygame.mixer.Sound("button_click.wav")
 button_sound.set_volume(0.5)
+pygame.mixer.music.load("marbble assets/songs/Savanna Sprint.mp3")
+pygame.mixer.music.play(-1)
 
 player_ball = Ball(WIDTH // 2, HEIGHT - 40, (0, 0, 255))
 enemies = []
