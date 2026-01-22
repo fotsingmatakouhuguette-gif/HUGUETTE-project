@@ -104,6 +104,10 @@ pygame.display.set_caption("2 Player Knock-Out")
 clock = pygame.time.Clock()
 font = pygame.font.Font(None, 32)
 
+pygame.mixer.init()
+button_sound = pygame.mixer.Sound("Desktop/marbble game/button_click.wav")
+button_sound.set_volume(0.5)
+
 player_ball = Ball(WIDTH // 2, HEIGHT - 40, (0, 0, 255))
 enemies = []
 scores = [0, 0]
@@ -134,14 +138,21 @@ while running:
             if game_state == MENU:
                 if start_button_rect.collidepoint(mouse_pos):
                     reset_game()
+                    button_sound.play()
+
                 elif about_button_rect.collidepoint(mouse_pos):
                     game_state=ABOUT
+                    button_sound.play()
+
                 elif how_to_play_button_rect.collidepoint(mouse_pos):
                     game_state=HOW_TO_PLAY
+                    button_sound.play()
 
             elif game_state == PLAYING:
                 if pause_button_rect.collidepoint(mouse_pos):
                     game_state = PAUSED
+                    button_sound.play()
+
                 elif not aiming and not turn_active:
                     aiming = True
                     start_pos = (player_ball.x, player_ball.y)
@@ -149,20 +160,29 @@ while running:
             elif game_state == PAUSED:
                 if resume_button_rect.collidepoint(mouse_pos):
                     game_state = PLAYING
+                    button_sound.play()
+
                 elif restart_button_rect.collidepoint(mouse_pos):
                     reset_game()
+                    button_sound.play()
+
                 elif menu_button_rect.collidepoint(mouse_pos):
                      game_state = MENU
+                     button_sound.play()
 
             elif game_state == GAME_OVER:
                 if restart_button_rect.collidepoint(mouse_pos):
                     reset_game()
+                    button_sound.play()
+
                 elif menu_button_rect.collidepoint(mouse_pos):
                      game_state = MENU
+                     button_sound.play()
 
             elif menu_button_rect.collidepoint(mouse_pos):
                 if game_state in (HOW_TO_PLAY,ABOUT,GAME_OVER,PAUSED):
                     game_state=MENU
+                    button_sound.play()
 
         if event.type == pygame.MOUSEBUTTONUP and aiming and game_state == PLAYING:
             aiming = False
