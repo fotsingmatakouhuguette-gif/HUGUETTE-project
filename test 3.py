@@ -105,7 +105,7 @@ clock = pygame.time.Clock()
 font = pygame.font.Font(None, 32)
 
 pygame.mixer.init()
-button_sound = pygame.mixer.Sound("Desktop/marbble game/button_click.wav")
+button_sound = pygame.mixer.Sound("button_click.wav")
 button_sound.set_volume(0.5)
 
 player_ball = Ball(WIDTH // 2, HEIGHT - 40, (0, 0, 255))
