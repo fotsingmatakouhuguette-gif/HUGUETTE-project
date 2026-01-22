@@ -151,10 +151,15 @@ while running:
                     game_state = PLAYING
                 elif restart_button_rect.collidepoint(mouse_pos):
                     reset_game()
+                elif menu_button_rect.collidepoint(mouse_pos):
+                     game_state = MENU
 
             elif game_state == GAME_OVER:
                 if restart_button_rect.collidepoint(mouse_pos):
                     reset_game()
+                elif menu_button_rect.collidepoint(mouse_pos):
+                     game_state = MENU
+
             elif menu_button_rect.collidepoint(mouse_pos):
                 if game_state in (HOW_TO_PLAY,ABOUT,GAME_OVER,PAUSED):
                     game_state=MENU
