@@ -1,6 +1,4 @@
 ﻿# AFRIPLAY
-## project overview 
-
 ##  Project Overview
 ** AFRIPLAY** Is a gaming plateform digitizing traditional Cameroonian games like Riddles,marbles,and Nyama Nyama to preserve cultural heritage for digitl generation made with **Python (Pygame)**.  
 
@@ -44,3 +42,4 @@ This project was developed by a team of five students:
 **============================== Enjoy playing and keep learning! ==================================**
 
 https://suno.com/s/dcVSl7rzsVoHjGVZ USAGE OF SUNO AI FOR THE MUSICS. they are not ours.
+
