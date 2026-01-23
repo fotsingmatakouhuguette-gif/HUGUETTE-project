@@ -1,0 +1,325 @@
+[
+  {
+    "question": "What has a head and a tail but no body?",
+    "choices": ["Snake", "Coin", "River", "Shadow"],
+    "answer": 1
+  },
+  {
+    "question": "What runs but never walks?",
+    "choices": ["Dog", "River", "Wind", "Clock"],
+    "answer": 1
+  },
+  {
+    "question": "No mouth no ears but i speak. What am I?",
+    "choices": ["Echo", "Wind", "Shadow", "Water"],
+    "answer": 0
+  },
+  {
+    "question": "i eat and poop at the same time. who i am ?",
+    "choices": ["grinding machine", "tap", "eating shadow", "rigole"],
+    "answer": 0
+
+  },
+
+    {
+      "question": "The more you move, the more you leave behind",
+      "choices": {
+        "1": "Shadow",
+        "2": "Footstep",
+        "3": "Wind",
+        "4": "Dust"
+      },
+      "answer": 2
+    },
+    {
+      "question": "I have cities but no houses, water but no fishes, and mountains but no trees. Who am I?",
+      "choices": {
+        "1": "Globe",
+        "2": "Painting",
+        "3": "Map",
+        "4": "Dream"
+      },
+      "answer": 3
+    },
+    {
+      "question": "I disappear as soon as they call my name",
+      "choices": {
+        "1": "Silence",
+        "2": "Echo",
+        "3": "Shadow",
+        "4": "Secret"
+      },
+      "answer": 1
+    },
+    {
+      "question": "What has to be broken before you can use it?",
+      "choices": {
+        "1": "Egg",
+        "2": "Glass",
+        "3": "Stick",
+        "4": "Seal"
+      },
+      "answer": 1
+    },
+    {
+      "question": "I'm born tall and I die short",
+      "choices": {
+        "1": "Tree",
+        "2": "Pencil",
+        "3": "Building",
+        "4": "Candle"
+      },
+      "answer": 4
+    },
+    {
+      "question": "I get wetter the more I dry. Who am I?",
+      "choices": {
+        "1": "Sponge",
+        "2": "Cloud",
+        "3": "Rain",
+        "4": "Towel"
+      },
+      "answer": 4
+    },
+    {
+      "question": "What word is spelled incorrectly in all dictionaries?",
+      "choices": {
+        "1": "Wrong",
+        "2": "Incorrectly",
+        "3": "Mistake",
+        "4": "Error"
+      },
+      "answer": 2
+    },
+    {
+      "question": "I have keys but no room. Who am I?",
+      "choices": {
+        "1": "Piano",
+        "2": "Keyboard",
+        "3": "Lock",
+        "4": "Map"
+      },
+      "answer": 2
+    },
+    {
+      "question": "Forward I was heavy, backward I'm not. What am I?",
+      "choices": {
+        "1": "Load",
+        "2": "Weight",
+        "3": "Ton / Not",
+        "4": "Stone"
+      },
+      "answer": 3
+    },
+    {
+      "question": "The more you have of me, the less you see",
+      "choices": {
+        "1": "Fog",
+        "2": "Darkness",
+        "3": "Night",
+        "4": "Smoke"
+      },
+      "answer": 2
+    },
+    {
+      "question": "What has an eye but cannot see?",
+      "choices": {
+        "1": "Needle",
+        "2": "Camera",
+        "3": "Storm",
+        "4": "Potato"
+      },
+      "answer": 1
+    },
+    {
+      "question": "Has teeth but can't bite",
+      "choices": {
+        "1": "Saw",
+        "2": "Comb",
+        "3": "Zipper",
+        "4": "Gear"
+      },
+      "answer": 2
+    },
+    {
+      "question": "What building has the most stories?",
+      "choices": {
+        "1": "School",
+        "2": "Hotel",
+        "3": "Cinema",
+        "4": "Library"
+      },
+      "answer": 4
+    },
+    {
+      "question": "What lets you look right through a wall?",
+      "choices": {
+        "1": "Light",
+        "2": "Glass",
+        "3": "Window",
+        "4": "Air"
+      },
+      "answer": 3
+    },
+    {
+      "question": "What has a neck but no head?",
+      "choices": {
+        "1": "Shirt",
+        "2": "Guitar",
+        "3": "Road",
+        "4": "Bottle"
+      },
+      "answer": 4
+    },
+    {
+      "question": "I have hands but I can't clap",
+      "choices": {
+        "1": "Doll",
+        "2": "Statue",
+        "3": "Robot",
+        "4": "Clock"
+      },
+      "answer": 4
+    },
+    {
+      "question": "What can you hold in your left hand but not your right hand?",
+      "choices": {
+        "1": "Your phone",
+        "2": "Your shadow",
+        "3": "A pen",
+        "4": "Your right hand"
+      },
+      "answer": 4
+    },
+    {
+      "question": "What flies forever and never rests?",
+      "choices": {
+        "1": "Wind",
+        "2": "Cloud",
+        "3": "Bird",
+        "4": "Time"
+      },
+      "answer": 4
+    },
+    {
+      "question": "I have no life but I can die. Who am I?",
+      "choices": {
+        "1": "Battery",
+        "2": "Fire",
+        "3": "Computer",
+        "4": "Robot"
+      },
+      "answer": 1
+    },
+    {
+      "question": "I can fall from the tallest building and be OK, but put me in water and I die",
+      "choices": {
+        "1": "Stone",
+        "2": "Glass",
+        "3": "Plastic",
+        "4": "Paper"
+      },
+      "answer": 4
+    },
+    {
+      "question": "What is always in front of you but can't be seen?",
+      "choices": {
+        "1": "Future",
+        "2": "Air",
+        "3": "Shadow",
+        "4": "Tomorrow"
+      },
+      "answer": 1
+    },
+    {
+      "question": "I have one leg, one foot, and four legs. Who am I?",
+      "choices": {
+        "1": "Chair",
+        "2": "Table",
+        "3": "Animal",
+        "4": "Bed"
+      },
+      "answer": 4
+    },
+    {
+      "question": "What can run but never talk?",
+      "choices": {
+        "1": "River",
+        "2": "Clock",
+        "3": "Machine",
+        "4": "Horse"
+      },
+      "answer": 1
+    },
+    {
+      "question": "What can travel the whole world while staying in the same corner?",
+      "choices": {
+        "1": "Compass",
+        "2": "Coin",
+        "3": "Clock",
+        "4": "Stamp"
+      },
+      "answer": 4
+    },
+    {
+      "question": "I have an eye but can't see, and I have a storm",
+      "choices": {
+        "1": "Tornado",
+        "2": "Cyclone",
+        "3": "Volcano",
+        "4": "Hurricane"
+      },
+      "answer": 4
+    },
+    {
+      "question": "What curls up the way its mother taught it?",
+      "choices": {
+        "1": "A baby centipede",
+        "2": "A snake",
+        "3": "An earthworm",
+        "4": "A caterpillar"
+      },
+      "answer": 1
+    },
+    {
+      "question": "What does not allow another hen to brood in its place?",
+      "choices": {
+        "1": "A rooster",
+        "2": "A chick",
+        "3": "A wild hen",
+        "4": "The hen sitting on her eggs"
+      },
+      "answer": 4
+    },
+    {
+      "question": "Who dances to chase away evil spirits among the Bassa?",
+      "choices": {
+        "1": "Women with the koo or bikêhên",
+        "2": "Hunters",
+        "3": "Elders",
+        "4": "Children"
+      },
+      "answer": 1
+    },
+    {
+      "question": "What tests the bravery of young Bassa on the ground?",
+      "choices": {
+        "1": "Hunting",
+        "2": "Masin wrestling",
+        "3": "Racing",
+        "4": "Stick fighting"
+      },
+      "answer": 2
+    },
+    {
+      "question": "Which pierced rock reads the future among the Bassa?",
+      "choices": {
+        "1": "Sacred hill",
+        "2": "Royal stone",
+        "3": "Stone altar",
+        "4": "Ngok Lituba"
+      },
+      "answer": 4
+    }
+  ]
+

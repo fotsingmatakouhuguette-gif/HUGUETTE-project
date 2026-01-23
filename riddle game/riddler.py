@@ -49,10 +49,10 @@ font = pygame.font.Font(None, 36)
 big_font = pygame.font.Font(None, 64)
 
 # ---------- ASSETS ----------
-sky=pygame.transform.scale(pygame.image.load("assets/backgrounds/sky.jpeg"), (WIDTH, HEIGHT))
-ground=pygame.transform.scale(pygame.image.load("assets/backgrounds/ground.jpeg"), (WIDTH, HEIGHT - GROUND_LEVEL))
-menu_list=pygame.transform.scale(pygame.image.load("assets/backgrounds/menu background.jpeg"), (WIDTH, HEIGHT))
-other_list=pygame.transform.scale(pygame.image.load("assets/backgrounds/listing.jpeg"), (WIDTH, HEIGHT))
+sky=pygame.transform.scale(pygame.image.load("assets/backgrounds/sky.jpg"), (WIDTH, HEIGHT))
+ground=pygame.transform.scale(pygame.image.load("assets/backgrounds/ground.jpg"), (WIDTH, 200))
+menu_list=pygame.transform.scale(pygame.image.load("assets/backgrounds/menu background.png"), (WIDTH, HEIGHT))
+other_list=pygame.transform.scale(pygame.image.load("assets/backgrounds/listing.png"), (WIDTH, HEIGHT))
 
 # ---------- PLAYER SPRITES ---------
 idle_img = pygame.image.load("assets/player/saut/idle.png").convert_alpha()
@@ -69,19 +69,19 @@ jump_frame = 0
 jump_anim_speed = 0.2
 
 #---------- ENEMIES ----------
-enemy_img=pygame.image.load("assets/enemies/gary.jpeg").convert_alpha()
+enemy_img=pygame.image.load("assets/enemies/gary.png").convert_alpha()
 flying_enemy_img=pygame.image.load("assets/enemies/flying.png").convert_alpha()
 
 #---------- UI ELEMENTS ----------
 heart_img=pygame.transform.scale(
-    pygame.image.load("assets/backgrounds/heart.jpeg").convert_alpha(), (32, 32)
+    pygame.image.load("assets/backgrounds/heart.png").convert_alpha(), (32, 32)
 )
 congrats_message=pygame.transform.scale(
-    pygame.image.load("assets/buttons/congratulations.jpeg").convert_alpha(), (400, 100)
+    pygame.image.load("assets/buttons/congratulations.png").convert_alpha(), (400, 100)
 )
 congrats_message_rect=congrats_message.get_rect(center=(400,200))
 game_over_message=pygame.transform.scale(
-    pygame.image.load("assets/buttons/game over.jpeg").convert_alpha(), (250, 100)
+    pygame.image.load("assets/buttons/game over.png").convert_alpha(), (250, 100)
 )
 game_over_message_rect=game_over_message.get_rect(center=(400,200))
 
