@@ -42,9 +42,9 @@ other_list=pygame.transform.scale(pygame.image.load("assets/backgrounds/listing.
 
 #---------- ENEMIES ----------
 enemy_img=pygame.image.load("assets/enemies/gary.jpeg").convert_alpha()
-flying_enemy_img=pygame.image.load("assets/enemies/flying.jpeg").convert_alpha()
+flying_enemy_img=pygame.image.load("assets/enemies/flying.png").convert_alpha()
 #---------- UI ELEMENTS ----------
-heart_img=pygame.tranform.scale(
+heart_img=pygame.transform.scale(
     pygame.image.load("assets/backgrounds/heart.jpeg").convert_alpha(), (32, 32)
 )
 congrats_message=pygame.transform.scale(
@@ -58,7 +58,7 @@ game_over_message_rect=game_over_message.get_rect(center=(400,200))
 #---------- SOUNDS ----------
 jump_sound=pygame.mixer.Sound("assets/songs/jump.wav")
 hit_sound=pygame.mixer.Sound("assets/songs/hit.wav")
-correct_sound=pygame.mixer.Sound("assets/songs/correct.wav")
+correct_sound=pygame.mixer.Sound("assets/songs/jump.wav")
 pygame.mixer.music.load("assets/songs/music.mp3")
 pygame.mixer.music.set_volume(0.5)
 pygame.mixer.music.play(-1)
