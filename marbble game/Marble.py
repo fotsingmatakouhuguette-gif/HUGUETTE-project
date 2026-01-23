@@ -42,49 +42,49 @@ game_state = MENU
 
 # ---------------- BUTTONS ----------------
 start_button = pygame.transform.scale(
-    pygame.image.load("marbble assets/buttons/start.png").convert_alpha(),(200, 80)
+    pygame.image.load("marbble assets/marbble assets/buttons/Start.png").convert_alpha(),(200, 80)
 )
 start_button_rect = start_button.get_rect(center=(400,220))
 
 pause_button = pygame.transform.scale(
-    pygame.image.load("marbble assets/buttons/pause.png").convert_alpha(),(80, 50)
+    pygame.image.load("marbble assets/marbble assets/buttons/pause.png").convert_alpha(),(80, 50)
 )
 pause_button_rect= pause_button.get_rect(topleft=(718,10))
 
 resume_button = pygame.transform.scale(
-    pygame.image.load("marbble assets/buttons/resume.png").convert_alpha(),(200, 50)
+    pygame.image.load("marbble assets/marbble assets/buttons/resume.png").convert_alpha(),(200, 50)
 )
 resume_button_rect = resume_button.get_rect(center=(400,250))
 
 restart_button = pygame.transform.scale(
-    pygame.image.load("marbble assets/buttons/restart.png").convert_alpha(),(200, 50)
+    pygame.image.load("marbble assets/marbble assets/buttons/restart.png").convert_alpha(),(200, 50)
 )
 restart_button_rect = restart_button.get_rect(center=(400,320))
 
 about_button= pygame.transform.scale(
-    pygame.image.load("marbble assets/buttons/about.png").convert_alpha(),(200,80)
+    pygame.image.load("marbble assets/marbble assets/buttons/about.png").convert_alpha(),(200,80)
 )
 about_button_rect= about_button.get_rect(center=(400,430))
 
 how_to_play_button=pygame.transform.scale(
-    pygame.image.load("marbble assets/buttons/how to play.png").convert_alpha(),(210,90)
+    pygame.image.load("marbble assets/marbble assets/buttons/how to play.png").convert_alpha(),(210,90)
 )
 how_to_play_button_rect= how_to_play_button.get_rect(center=(400,320))
 
 menu_button=pygame.transform.scale(
-    pygame.image.load("marbble assets/buttons/back.png").convert_alpha(),(108,50)
+    pygame.image.load("marbble assets/marbble assets/buttons/back.png").convert_alpha(),(108,50)
 )
 menu_button_rect= menu_button.get_rect(topleft=(690,10))
 title= pygame.transform.scale(
-    pygame.image.load("marbble assets/buttons/Marble.png").convert_alpha(),(400,100)
+    pygame.image.load("marbble assets/marbble assets/buttons/Marble.png").convert_alpha(),(400,100)
 )
 title_rect= title.get_rect(center=(400,100))
 
 #----------------BACKGROUNDS------------------
-menu_back= pygame.transform.scale(pygame.image.load("marbble assets/backs/menu_back.png"),(WIDTH,HEIGHT))
+menu_back= pygame.transform.scale(pygame.image.load("marbble assets/marbble assets/backs/menu_back.png"),(WIDTH,HEIGHT))
 #about_back= pygame.transform.scale(pygame.image.load("marbble assets/backs/menu_back.png"),(WIDTH,HEIGHT))
-how_to_play_back= pygame.transform.scale(pygame.image.load("marbble assets/backs/how to play back.png"),(WIDTH,HEIGHT))
-play_back=pygame.transform.scale(pygame.image.load("marbble assets/backs/playground.png"),(WIDTH,HEIGHT))
+how_to_play_back= pygame.transform.scale(pygame.image.load("marbble assets/marbble assets/backs/how to play back.png"),(WIDTH,HEIGHT))
+play_back=pygame.transform.scale(pygame.image.load("marbble assets/marbble assets/backs/playground.png"),(WIDTH,HEIGHT))
 
 # ---------------- BALL CLASS ----------------
 class Ball:
@@ -173,11 +173,11 @@ def reset_game():
     game_state = PLAYING
 
 # ---------------- MAIN ----------------
-button_sound = pygame.mixer.Sound("marbble assets/songs/button_click.wav")
+button_sound = pygame.mixer.Sound("marbble assets/marbble assets/songs/button_click.wav")
 button_sound.set_volume(0.5)
-pygame.mixer.music.load("marbble assets/songs/Savanna Sprint.mp3")
+pygame.mixer.music.load("marbble assets/marbble assets/songs/Savanna Sprint.mp3")
 pygame.mixer.music.play(-1)
-wall_sound = pygame.mixer.Sound("marbble assets/songs/wall_hit.wav")
+wall_sound = pygame.mixer.Sound("marbble assets/marbble assets/songs/wall_hit.wav")
 wall_sound.set_volume(0.5)
 
 
@@ -324,12 +324,14 @@ while running:
         screen.blit(how_to_play_button, how_to_play_button_rect)
     elif game_state==ABOUT:
         screen.blit(menu_back,(0,0))
-        screen.blit(font.render("marbble game created  by nadriekoda",True,(0,0,0)),(200,230))
+        screen.blit(font.render("2 players marbble game defeat your",True ,(0,0,0)),(200,230))
+        screen.blit(font.render("opponent by knocking out the red balls",True ,(0,0,0)),(200,260))
         screen.blit(menu_button,menu_button_rect)
     elif game_state==HOW_TO_PLAY:
         screen.blit(how_to_play_back,(0,0))
         screen.blit(font.render("drag the ball with the mouse,release and shoot ",True,(0,0,0)),(160,230))
         screen.blit(font.render("The balls must go out of the square",True,(0,0,0)),(230,260))
+        screen.blit(font.render("1 shot per turn",True,(0,0,0)),(230,290))
         screen.blit(menu_button,menu_button_rect)
     elif game_state == PLAYING:
         screen.blit(play_back,(0,0))
