@@ -71,6 +71,49 @@ jump_anim_speed = 0.2
 #---------- ENEMIES ----------
 enemy_img=pygame.image.load("assets/enemies/gary.jpeg").convert_alpha()
 flying_enemy_img=pygame.image.load("assets/enemies/flying.png").convert_alpha()
+
+#---------- UI ELEMENTS ----------
+heart_img=pygame.transform.scale(
+    pygame.image.load("assets/backgrounds/heart.jpeg").convert_alpha(), (32, 32)
+)
+congrats_message=pygame.transform.scale(
+    pygame.image.load("assets/buttons/congratulations.jpeg").convert_alpha(), (400, 100)
+)
+congrats_message_rect=congrats_message.get_rect(center=(400,200))
+game_over_message=pygame.transform.scale(
+    pygame.image.load("assets/buttons/game over.jpeg").convert_alpha(), (250, 100)
+)
+game_over_message_rect=game_over_message.get_rect(center=(400,200))
+
+#---------- SOUNDS ----------
+jump_sound=pygame.mixer.Sound("assets/songs/jump.wav")
+hit_sound=pygame.mixer.Sound("assets/songs/hit.wav")
+correct_sound=pygame.mixer.Sound("assets/songs/jump.wav")
+pygame.mixer.music.load("assets/songs/music.mp3")
+pygame.mixer.music.set_volume(0.5)
+pygame.mixer.music.play(-1)
+
+ #---------- GAME DATA ----------
+lives = MAX_LIVES
+start_time = pygame.time.get_ticks()
+survival_time = 0
+riddle_start_time = 0
+collision_locked = False
+
+feedback_text = ""
+feedback_color = (255, 255, 255)
+feedback_start_time = 0
+show_feedback = False
+
+# ---------- ENEMIES LIST ----------
+enemies = []
+flying_enemies = []
+
+ENEMY_EVENT = pygame.USEREVENT + 1
+FLYING_EVENT = pygame.USEREVENT + 2
+pygame.time.set_timer(ENEMY_EVENT, 2000)
+pygame.time.set_timer(FLYING_EVENT, 3000)
+
 # ---------- BUTTONS ----------
 start_button = pygame.transform.scale(
     pygame.image.load("assets/buttons/start.png").convert_alpha(), (250, 100)
@@ -115,47 +158,6 @@ title= pygame.transform.scale(
     pygame.image.load("assets/buttons/riddler.png").convert_alpha(),(400,100)
 )
 title_rect= title.get_rect(center=(400,100))
-#---------- UI ELEMENTS ----------
-heart_img=pygame.transform.scale(
-    pygame.image.load("assets/backgrounds/heart.jpeg").convert_alpha(), (32, 32)
-)
-congrats_message=pygame.transform.scale(
-    pygame.image.load("assets/buttons/congratulations.jpeg").convert_alpha(), (400, 100)
-)
-congrats_message_rect=congrats_message.get_rect(center=(400,200))
-game_over_message=pygame.transform.scale(
-    pygame.image.load("assets/buttons/game over.jpeg").convert_alpha(), (250, 100)
-)
-game_over_message_rect=game_over_message.get_rect(center=(400,200))
-#---------- SOUNDS ----------
-jump_sound=pygame.mixer.Sound("assets/songs/jump.wav")
-hit_sound=pygame.mixer.Sound("assets/songs/hit.wav")
-correct_sound=pygame.mixer.Sound("assets/songs/jump.wav")
-pygame.mixer.music.load("assets/songs/music.mp3")
-pygame.mixer.music.set_volume(0.5)
-pygame.mixer.music.play(-1)
-
- #---------- GAME DATA ----------
-lives = MAX_LIVES
-start_time = pygame.time.get_ticks()
-survival_time = 0
-riddle_start_time = 0
-collision_locked = False
-
-feedback_text = ""
-feedback_color = (255, 255, 255)
-feedback_start_time = 0
-show_feedback = False
-
-# ---------- ENEMIES LIST ----------
-enemies = []
-flying_enemies = []
-
-ENEMY_EVENT = pygame.USEREVENT + 1
-FLYING_EVENT = pygame.USEREVENT + 2
-pygame.time.set_timer(ENEMY_EVENT, 2000)
-pygame.time.set_timer(FLYING_EVENT, 3000)
-
 
 while True:
     for event in pygame.event.get():
