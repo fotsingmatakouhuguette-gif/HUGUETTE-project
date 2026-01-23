@@ -1,0 +1,187 @@
+import pygame
+import random
+import sys
+import time
+import math
+import array
+import os
+
+pygame.init()
+pygame.mixer.init()
+
+WIDTH, HEIGHT = 900, 500
+screen = pygame.display.set_mode((WIDTH, HEIGHT))
+pygame.display.set_caption("Nyama Nyama")
+
+clock = pygame.time.Clock()
+font_title = pygame.font.SysFont("arialblack", 48)
+font_btn = pygame.font.SysFont("arial", 28)
+font_text = pygame.font.SysFont("arial", 22)
+
+bg = (25, 25, 25)
+btn_colors = [(40,120,220),(40,180,90),(220,70,70)]
+btn_selected = (255, 215, 0)
+text_color = (255,255,255)
+
+HS_FILE = "highscore.txt"
+
+def load_high_score():
+    if not os.path.exists(HS_FILE):
+        with open(HS_FILE, "w") as f:
+            f.write("0")
+    with open(HS_FILE, "r") as f:
+        try:
+            return int(f.read())
+        except:
+            return 0
+
+def save_high_score(score):
+    with open(HS_FILE, "w") as f:
+        f.write(str(score))
+
+high_score = load_high_score()
+
+def tone(freq, duration):
+    rate = 44100
+    n = int(rate * duration)
+    buf = array.array("h")
+    for i in range(n):
+        t = i / rate
+        buf.append(int(32767 * math.sin(2 * math.pi * freq * t)))
+    return pygame.mixer.Sound(buffer=buf)
+
+sound_good = tone(700,0.2)
+sound_bad = tone(200,0.3)
+
+categories = [
+    ("EDIBLE TCHOP", {"Fish": True, "Snake": True, "Pork": True, "Chicken": True, "Cat": True}),
+    ("NOT EDIBLE", {"Dog": False, "Turtle": False, "Pufferfish": False, "Scorpion": False}),
+    ("FOOTBALL PLAYER", {"Cristiano Ronaldo": True, "Lionel Messi": True, "Neymar Junior": True, "Karim Benzema": True, "Marco Reus": True}),
+    ("BASKETBALL PLAYER", {"Lebron James": True, "Steph Curry": True, "Anthony Edwards": True, "Ja Morant": True, "Klay Thompson": True}),
+    ("CAR BRAND", {"Mercedes": True, "Toyota": True, "Tesla": True, "Ford": True, "Rolls Royce": True}),
+    ("NOT CARS", {"Toshiba": False, "Nanfan": False, "Oreimo": False, "Apple": False, "Optimus": False}),
+    ("BOYS NAME", {"Ivan": True, "Stephane": True, "Jorge": True, "Kris": True, "Justin": True, "Karis": True}),
+    ("GIRLS NAME", {"Blessing": True, "Karen": True, "Stella": True, "Ange": True})
+]
+
+def about_screen():
+    while True:
+        clock.tick(60)
+        screen.fill(bg)
+        screen.blit(font_title.render("ABOUT NYAMA NYAMA",True,text_color),(180,40))
+        lines = [
+            "Press E if the item matches the category",
+            "Press N if it does not",
+            "You have 3 lives",
+            "Levels increase game speed",
+            "Timer reaching zero loses a life",
+            "High score is saved automatically",
+            "Press ESC to return"
+        ]
+        for i,l in enumerate(lines):
+            screen.blit(font_text.render(l,True,text_color),(260,150+i*30))
+        for e in pygame.event.get():
+            if e.type==pygame.QUIT: sys.exit()
+            if e.type==pygame.KEYDOWN and e.key==pygame.K_ESCAPE:
+                return
+        pygame.display.flip()
+
+def play_game():
+    global high_score
+    score,lives,level,correct = 0,3,1,0
+
+    def level_time(l): 
+        return 8 if l==1 else 5 if l==2 else 3
+
+    def new_round():
+        c,i = random.choice(categories)
+        w,v = random.choice(list(i.items()))
+        return c,w,v
+
+    cat,word,val = new_round()
+    start = time.time()
+    duration = level_time(level)
+
+    while lives>0:
+        clock.tick(60)
+        screen.fill(bg)
+
+        elapsed = time.time()-start
+        remain = max(0,duration-elapsed)
+        pygame.draw.rect(screen,(60,60,60),(250,120,400,12))
+        pygame.draw.rect(screen,(200,80,80),(250,120,int((remain/duration)*400),12))
+
+        if remain<=0:
+            lives-=1
+            sound_bad.play()
+            cat,word,val = new_round()
+            start=time.time()
+            duration=level_time(level)
+
+        screen.blit(font_btn.render(cat,True,text_color),(350,80))
+        screen.blit(font_title.render(word,True,text_color),(WIDTH//2-font_title.size(word)[0]//2,190))
+        screen.blit(font_text.render(f"Score: {score}",True,text_color),(40,40))
+        screen.blit(font_text.render(f"High Score: {high_score}",True,text_color),(40,70))
+        screen.blit(font_text.render(f"Lives: {lives}",True,text_color),(40,100))
+        screen.blit(font_text.render(f"Level: {level}",True,text_color),(40,130))
+
+        for e in pygame.event.get():
+            if e.type==pygame.QUIT: sys.exit()
+            if e.type==pygame.KEYDOWN:
+                if e.key==pygame.K_ESCAPE: return
+                if e.key in (pygame.K_e,pygame.K_n):
+                    choice = e.key==pygame.K_e
+                    if choice==val:
+                        score+=1; correct+=1; sound_good.play()
+                    else:
+                        score-=1; lives-=1; sound_bad.play()
+                    if correct>=5 and level<3:
+                        level+=1; correct=0
+                    cat,word,val=new_round()
+                    start=time.time()
+                    duration=level_time(level)
+        pygame.display.flip()
+
+    if score > high_score:
+        high_score = score
+        save_high_score(high_score)
+
+    while True:
+        screen.fill(bg)
+        screen.blit(font_title.render("GAME OVER",True,text_color),(320,160))
+        screen.blit(font_btn.render(f"Score: {score}",True,text_color),(380,220))
+        screen.blit(font_btn.render(f"High Score: {high_score}",True,text_color),(350,260))
+        screen.blit(font_text.render("Press ENTER to return to menu",True,text_color),(300,320))
+        pygame.display.flip()
+        for e in pygame.event.get():
+            if e.type==pygame.QUIT: sys.exit()
+            if e.type==pygame.KEYDOWN and e.key==pygame.K_RETURN:
+                return
+
+def main_menu():
+    options = ["Nyama Nyama Game","About the Game","Quit"]
+    selected = 0
+    while True:
+        clock.tick(60)
+        screen.fill(bg)
+        screen.blit(font_title.render("WEPLAY",True,text_color),(350,50))
+        screen.blit(font_text.render(f"High Score: {high_score}",True,text_color),(370,110))
+        for i,opt in enumerate(options):
+            color = btn_selected if i==selected else btn_colors[i]
+            rect = pygame.Rect(300,160+i*70,300,50)
+            pygame.draw.rect(screen,color,rect,border_radius=10)
+            t = font_btn.render(opt,True,text_color)
+            screen.blit(t,(rect.centerx-t.get_width()//2,rect.centery-t.get_height()//2))
+        for e in pygame.event.get():
+            if e.type==pygame.QUIT: sys.exit()
+            if e.type==pygame.KEYDOWN:
+                if e.key==pygame.K_UP: selected=(selected-1)%3
+                if e.key==pygame.K_DOWN: selected=(selected+1)%3
+                if e.key==pygame.K_RETURN:
+                    if selected==0: play_game()
+                    if selected==1: about_screen()
+                    if selected==2: sys.exit()
+                if e.key==pygame.K_ESCAPE: sys.exit()
+        pygame.display.flip()
+
+main_menu()
