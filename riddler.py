@@ -293,6 +293,175 @@ while True:
             if jump_frame >= len(jump_img):
                 jump_frame = len(jump_img) - 1
             player_img = jump_img[int(jump_frame)]
+            # ---------- ENEMY MOVEMENT ----------
+        for enemy in enemies[:]:
+            enemy.x += 6
+            if enemy.left > WIDTH:
+                enemies.remove(enemy)
+        
+        for f_enemy in flying_enemies[:]:
+            f_enemy.x -= 5
+            if f_enemy.right < 0:
+                flying_enemies.remove(f_enemy)
+
+        # ---------- COLLISION DETECTION ----------
+        if not collision_locked:
+            # Check collision with ground enemies
+            for enemy in enemies[:]:
+                if enemy.colliderect(player_rect):
+                    collision_locked = True
+                    enemies.clear()
+                    flying_enemies.clear()
+                    riddle_start_time = pygame.time.get_ticks()
+                    game_state = RIDDLE
+                    break
+            
+            # Check collision with flying enemies
+            if not collision_locked:
+                for f_enemy in flying_enemies[:]:
+                    if f_enemy.colliderect(player_rect):
+                        collision_locked = True
+                        enemies.clear()
+                        flying_enemies.clear()
+                        riddle_start_time = pygame.time.get_ticks()
+                        game_state = RIDDLE
+                        break
+    
+    # ---------- RIDDLE STATE LOGIC ----------
+    elif game_state == RIDDLE:
+        if not show_feedback:
+            # Check if time's up
+            if (pygame.time.get_ticks() - riddle_start_time) // 1000 >= RIDDLE_TIME:
+                lives -= 1
+                feedback_text = "TIME UP!"
+                feedback_color = (255, 165, 0)
+                show_feedback = True
+                feedback_start_time = pygame.time.get_ticks()
+                collision_locked = False
+                current_riddle += 1
+            
+            # Check if all riddles answered
+            if current_riddle >= len(riddles):
+                game_state = CONGRATS
+                end_time = pygame.time.get_ticks()
+            
+            # Check if player lost all lives
+            elif lives <= 0:
+                game_state = GAME_OVER
+                end_time = pygame.time.get_ticks()
+        else:
+            # Show feedback for a duration
+            if pygame.time.get_ticks() - feedback_start_time >= FEEDBACK_DURATION:
+                show_feedback = False
+                if lives <= 0:
+                    game_state = GAME_OVER
+                else:
+                    game_state = PLAYING
+
+    # ---------- DRAWING ----------
+    screen.fill((0, 0, 0))
+
+    if game_state == MENU:
+        screen.blit(menu_list, (0, 0))
+        #screen.blit(big_font.render("BOSH", True, (255, 255, 0)), (330, 150))
+        screen.blit(title,title_rect)
+        screen.blit(start_button, start_button_rect)
+        screen.blit(howto_button, howto_button_rect)
+        screen.blit(about_button, about_button_rect)
+
+    elif game_state == HOW_TO_PLAY:
+        screen.blit(other_list, (0, 0))
+        lines = [
+            "SPACE  - Jump",
+            "P      - Pause/Unpause game",
+            "1-4    - Answer riddles",
+            "Avoid enemies or answer riddles",
+            " correctly to survive!"
+        ]
+        for i, line in enumerate(lines):
+            screen.blit(font.render(line, True, (0, 0, 0)), (200, 200 + i * 40))
+        screen.blit(back_button, back_button_rect)
+
+    elif game_state == ABOUT:
+        screen.blit(other_list, (0, 0))
+        screen.blit(font.render("Educational Riddle Platformer", True, (0, 0, 0)), (200, 230))
+        screen.blit(font.render("try to survive", True, (0, 0, 0)), (200, 270))
+        screen.blit(back_button, back_button_rect)
+
+    elif game_state == PLAYING:
+        screen.blit(sky, (0, 0))
+        screen.blit(ground, (0, 400))
+        screen.blit(player_img, player_rect)
+
+        # Draw enemies
+        for enemy in enemies:
+            screen.blit(enemy_img, enemy)
+        for f_enemy in flying_enemies:
+            screen.blit(flying_enemy_img, f_enemy)
+
+        # Draw UI
+        for i in range(lives):
+            screen.blit(heart_img, (20 + i * 36, 20))
+        
+        screen.blit(font.render(f"Time: {survival_time}s", True, (255, 255, 255)), (20, 60))
+        screen.blit(pause_button, pause_button_rect)
+
+    elif game_state == PAUSED:
+        screen.blit(other_list, (0, 0))
+        screen.blit(back_button, back_button_rect)
+        screen.blit(big_font.render("PAUSED", True, (0, 0, 0)), (300, 180))
+        screen.blit(resume_button, resume_button_rect)
+        screen.blit(font.render("Press P or click Resume to continue", True, (0, 0, 0)), (220, 380))
+    
+    elif game_state == CONGRATS:
+        screen.blit(other_list, (0, 0))
+        screen.blit(congrats_message, congrats_message_rect)
+        screen.blit(font.render("You solved all riddles!", True, (255, 255, 255)), (260, 290))
+        screen.blit(font.render(f"Correct: {correct_answers}", True, (0, 255, 0)), (260, 340))
+        screen.blit(font.render(f"Wrong: {wrong_answers}", True, (255, 0, 0)), (260, 360))
+        screen.blit(font.render(f"Time Spent: {survival_time} seconds", True, (255, 255, 255)), (250, 400))
+        screen.blit(menu_button, menu_button_rect)
+
+    elif game_state == RIDDLE:
+        screen.blit(other_list, (0, 0))
+        screen.blit(back_button, back_button_rect)
+
+        if show_feedback:
+            txt = big_font.render(feedback_text, True, feedback_color)
+            screen.blit(txt, txt.get_rect(center=(WIDTH // 2, HEIGHT // 2)))
+        else:
+            r = riddles[current_riddle % len(riddles)]
+            
+            # Draw question
+            question_surf = font.render(r["question"], True, (0, 0, 0))
+            question_rect = question_surf.get_rect(center=(WIDTH // 2, 170))
+            screen.blit(question_surf, question_rect)
+
+            # Draw choices
+            start_y = 220
+            spacing = 55
+            for i, choice in enumerate(r["choices"]):
+                choice_surf = font.render(f"{i + 1}. {choice}", True, (0, 0, 0))
+                choice_rect = choice_surf.get_rect(center=(WIDTH // 2, start_y + i * spacing))
+                screen.blit(choice_surf, choice_rect)
+            
+            # Draw timer
+            remaining = RIDDLE_TIME - ((pygame.time.get_ticks() - riddle_start_time) // 1000)
+            timer_surf = font.render(f"Time Left: {remaining}", True, (255, 255, 0))
+            timer_rect = timer_surf.get_rect(center=(WIDTH // 2, 40))
+            screen.blit(timer_surf, timer_rect)
+
+    elif game_state == GAME_OVER:
+        screen.blit(other_list, (0, 0))
+        screen.blit(game_over_message, game_over_message_rect)
+        screen.blit(font.render(f"Time Spent: {survival_time} seconds", True, (0, 0, 0)), (250, 350))
+        screen.blit(font.render(f"Riddles Answered: {riddles_answered}", True, (0, 0, 0)), (250, 370))
+        screen.blit(font.render(f"Correct: {correct_answers}", True, (0, 255, 0)), (260, 290))
+        screen.blit(font.render(f"Wrong: {wrong_answers}", True, (255, 0, 0)), (260, 320))
+        screen.blit(restart_button, restart_button_rect)
+
+    pygame.display.update()
+    clock.tick(60)
             
 
     pygame.display.update()
