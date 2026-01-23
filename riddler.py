@@ -71,6 +71,50 @@ jump_anim_speed = 0.2
 #---------- ENEMIES ----------
 enemy_img=pygame.image.load("assets/enemies/gary.jpeg").convert_alpha()
 flying_enemy_img=pygame.image.load("assets/enemies/flying.png").convert_alpha()
+# ---------- BUTTONS ----------
+start_button = pygame.transform.scale(
+    pygame.image.load("assets/buttons/start.png").convert_alpha(), (250, 100)
+)
+start_button_rect = start_button.get_rect(center=(400, 220))
+
+howto_button = pygame.transform.scale(
+    pygame.image.load("assets/buttons/how to play.png").convert_alpha(), (250, 100)
+)
+howto_button_rect = howto_button.get_rect(center=(400, 320))
+
+about_button = pygame.transform.scale(
+    pygame.image.load("assets/buttons/about.png").convert_alpha(), (250, 100)
+)
+about_button_rect = about_button.get_rect(center=(400, 420))
+
+restart_button = pygame.transform.scale(
+    pygame.image.load("assets/buttons/restart 2.png").convert_alpha(), (100, 100)
+)
+restart_button_rect = restart_button.get_rect(topright=(800, 10))
+
+pause_button = pygame.transform.scale(
+    pygame.image.load("assets/buttons/pause.png").convert_alpha(), (100, 100)
+)
+pause_button_rect = pause_button.get_rect(topright=(800, 10))
+
+resume_button = pygame.transform.scale(
+    pygame.image.load("assets/buttons/resume.png").convert_alpha(), (200, 100)
+)
+resume_button_rect =    resume_button.get_rect(center=(400, 270))
+
+back_button = pygame.transform.scale(
+    pygame.image.load("assets/buttons/back.png").convert_alpha(), (200, 100)
+)
+back_button_rect = back_button.get_rect(topleft=(0, 0))
+
+menu_button = pygame.transform.scale(
+    pygame.image.load("assets/buttons/menu.png").convert_alpha(), (200, 150)
+)
+menu_button_rect = menu_button.get_rect(topleft=(0, 0))
+title= pygame.transform.scale(
+    pygame.image.load("assets/buttons/riddler.png").convert_alpha(),(400,100)
+)
+title_rect= title.get_rect(center=(400,100))
 #---------- UI ELEMENTS ----------
 heart_img=pygame.transform.scale(
     pygame.image.load("assets/backgrounds/heart.jpeg").convert_alpha(), (32, 32)
