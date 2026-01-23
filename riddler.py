@@ -1,8 +1,12 @@
 import pygame
-import sys
+import json
+import random
+from sys import exit
+import os
+
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 pygame.init()
-
 pygame.mixer.init()
 
 
@@ -27,6 +31,16 @@ CONGRATS = "congrats"
 
 game_state = MENU
 
+# ---------- LOAD RIDDLES ----------
+with open("riddles.json", "r", encoding="utf-8") as f:
+    riddles = json.load(f)
+
+current_riddle = 0
+riddles_answered = 0
+end_time = 0
+correct_answers = 0
+wrong_answers = 0
+best_time = 0
 
 screen=pygame.display.set_mode((WIDTH,HEIGHT))
 pygame.display.set_caption("[RIDDLER]")
@@ -39,6 +53,20 @@ sky=pygame.transform.scale(pygame.image.load("assets/backgrounds/sky.jpeg"), (WI
 ground=pygame.transform.scale(pygame.image.load("assets/backgrounds/ground.jpeg"), (WIDTH, HEIGHT - GROUND_LEVEL))
 menu_list=pygame.transform.scale(pygame.image.load("assets/backgrounds/menu background.jpeg"), (WIDTH, HEIGHT))
 other_list=pygame.transform.scale(pygame.image.load("assets/backgrounds/listing.jpeg"), (WIDTH, HEIGHT))
+
+# ---------- PLAYER SPRITES ---------
+idle_img = pygame.image.load("assets/player/saut/idle.png").convert_alpha()
+jump_img = [
+    pygame.image.load(f"assets/player/saut/jump_{i}.png").convert_alpha()
+    for i in range(4)
+]
+
+player_img = idle_img
+player_rect = player_img.get_rect(midbottom=(400, GROUND_LEVEL))
+player_velocity = 0
+is_jumping = False
+jump_frame = 0
+jump_anim_speed = 0.2
 
 #---------- ENEMIES ----------
 enemy_img=pygame.image.load("assets/enemies/gary.jpeg").convert_alpha()
@@ -62,6 +90,29 @@ correct_sound=pygame.mixer.Sound("assets/songs/jump.wav")
 pygame.mixer.music.load("assets/songs/music.mp3")
 pygame.mixer.music.set_volume(0.5)
 pygame.mixer.music.play(-1)
+
+ #---------- GAME DATA ----------
+lives = MAX_LIVES
+start_time = pygame.time.get_ticks()
+survival_time = 0
+riddle_start_time = 0
+collision_locked = False
+
+feedback_text = ""
+feedback_color = (255, 255, 255)
+feedback_start_time = 0
+show_feedback = False
+
+# ---------- ENEMIES LIST ----------
+enemies = []
+flying_enemies = []
+
+ENEMY_EVENT = pygame.USEREVENT + 1
+FLYING_EVENT = pygame.USEREVENT + 2
+pygame.time.set_timer(ENEMY_EVENT, 2000)
+pygame.time.set_timer(FLYING_EVENT, 3000)
+
+
 while True:
     for event in pygame.event.get():
         if event.type==pygame.QUIT:
