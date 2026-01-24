@@ -30,7 +30,7 @@ SELECTED_BOX_COLOR = (70, 70, 80)
 HS_FILE = "highscore.txt"
 #-------------------------ASSETS----------------------------
 #image=pygame.transform.scale(pygame.image.load("Nyama Nyama/assets/menu_back.jpeg"),(WIDTH,HEIGHT))
-pygame.mixer.music.load("assets/music.mp3")
+pygame.mixer.music.load("Nyama Nyama/assets/music.mp3")
 pygame.mixer.music.play(-1)
 
 def load_high_score():
