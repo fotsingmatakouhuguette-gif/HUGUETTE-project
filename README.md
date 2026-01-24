@@ -37,11 +37,12 @@ This project was developed by a team of five students:
 
 ##  Installation & Setup
 
- To play the executable version, download the game file in our site http://smarttutor.duckdns.org:8090/.
+ To play the executable version, download the game file in our site http://smarttutor.duckdns.org:8890/
 
 **============================== Enjoy playing and keep learning! ==================================**
 
 https://suno.com/s/dcVSl7rzsVoHjGVZ USAGE OF SUNO AI FOR THE MUSICS. they are not ours.
+
 
 
 
