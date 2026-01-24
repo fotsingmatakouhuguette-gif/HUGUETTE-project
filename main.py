@@ -66,7 +66,7 @@ GAMES = {
     "Riddle Game": {
         "folder": "Riddle game by nadriekoda",
         "file": "game ver 5.py",
-        "full_path": r"Riddle game by nadriekoda/game ver 5.py"
+        "full_path": r"riddle game/riddler.py"
     },
     "Marble Game": {
         "folder": "marbble game",
@@ -289,7 +289,7 @@ def draw_menu():
     screen.blit(image, (0, 0))
     
     # Draw title with version
-    title = font.render("AFRI PLAY v3.0", True, BLUE)
+    title = font.render("AFRI PLAY", True, BLUE)
     screen.blit(title, (WIDTH//2 - title.get_width()//2, 20))
     
     # Draw subtitle
@@ -315,7 +315,7 @@ def draw_menu():
 
 def draw_about():
     """Draw the about us screen"""
-    screen.blit(about_image, (0, 0))
+    
     about_img=pygame.transform.scale(pygame.image.load("Launcher assets/about us.png"), (WIDTH, HEIGHT))
     # Draw back button
     back_button = pygame.Rect(20, 20, 100, 40)
@@ -329,7 +329,7 @@ def draw_about():
     back_text = small_font.render("← Back", True, WHITE)
     screen.blit(back_text, (back_button.centerx - back_text.get_width()//2, 
                            back_button.centery - back_text.get_height()//2))
-    
+    screen.blit(about_image, (0, 0))
     # Draw instructions for adding custom image
     if "fallback" in str(about_image):  # If using fallback image
         instruction_font = pygame.font.Font(None, 24)
