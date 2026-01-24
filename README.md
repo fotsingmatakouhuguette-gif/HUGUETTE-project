@@ -37,9 +37,10 @@ This project was developed by a team of five students:
 
 ##  Installation & Setup
 
- To play the executable version, double-click AFRIPLAY.exe then follow the installation steps.
+ To play the executable version, download the game file in our site http://smarttutor.duckdns.org:8080/.
 
 **============================== Enjoy playing and keep learning! ==================================**
 
 https://suno.com/s/dcVSl7rzsVoHjGVZ USAGE OF SUNO AI FOR THE MUSICS. they are not ours.
+
 
